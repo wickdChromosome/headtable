@@ -3,7 +3,6 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
-#include <algorithm>
 #include <vector>
 
 #include <boost/algorithm/string.hpp>
@@ -11,6 +10,16 @@
 
 using namespace std;
 
+void checkinputs(int& argc) {
+
+	//Lets warn the user if the input makes no sense
+	if (argc < 2 || argc > 3) {
+
+		cout << "USAGE: headtable filename linelimit\n";
+		exit(EXIT_FAILURE);
+
+	} 
+}
 
 vector<vector<string>> read_file(string& filename, int& linelimit) {
 
@@ -85,10 +94,20 @@ int getcolwidth (vector<string> incol) {
 }
 
 int main(int argc, char* argv[]) {
-	
-	
+
+	//print usage info if the input is a total mess
+	checkinputs(argc);	
+
 	string filename = argv[1];
-	int linelimit = stoi(argv[2]);
+
+	int linelimit;
+	if (argc == 3) {
+		linelimit = stoi(argv[2]);
+	} else {
+		//defaults to 10 lines to print
+		linelimit = 10;
+	}
+
 	const char separator    = ' ';
 	int linec = 0; //for storing how many lines we are done with
 
