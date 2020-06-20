@@ -12,13 +12,60 @@ using namespace std;
 
 void checkinputs(int& argc) {
 
-	//Lets warn the user if the input makes no sense
+	//lets warn the user if the input makes no sense
 	if (argc < 2 || argc > 3) {
 
 		cout << "USAGE: headtable filename linelimit\n";
 		exit(EXIT_FAILURE);
 
 	} 
+}
+
+string getdelimiter(string& firstline) {
+
+	/* Gets the delimiter from the first line in the input file */
+	
+	char delim;
+	bool already_found = false; //used to check if only a single delim exists
+	char delims[] = {',',';','\t'};
+	int numseps = sizeof(delims)/sizeof(char);
+
+	//check if we 
+	for (int i = 0; i < numseps; i++) {
+	
+		if (firstline.find(delims[i]) != string::npos) {
+
+			//Check if we already have a delimiter
+			if (already_found == false) {
+
+				//found the delimiter		
+				delim = delims[i];
+				already_found = true;
+
+			} else {
+
+				//if no separator chars were found
+				cout << "ERROR: more than one separators were found\n";
+				exit(EXIT_FAILURE);
+
+			}
+
+		}
+	
+	}
+
+
+	//if all of these checks failed, exit
+	if (already_found == false) {
+		cout << "ERROR: Unable to deduce file separator" << endl;
+		exit(EXIT_FAILURE);
+	} else {
+		
+		string delimiter_result(1, delim);
+		return delimiter_result;
+	}
+
+
 }
 
 vector<vector<string>> read_file(string& filename, int& linelimit) {
@@ -28,7 +75,8 @@ vector<vector<string>> read_file(string& filename, int& linelimit) {
 
 	ifstream infile(filename);
 	vector<vector<string>> fullfile;
-
+	string delim;
+	
 	string line;
 	int linec = 0;
 	int numcols = 0;
@@ -36,9 +84,11 @@ vector<vector<string>> read_file(string& filename, int& linelimit) {
 	//Fill main vector with lines 
 	while(getline(infile, line)) {
 
+		//if this is the first row, check for popular delimiters
+		if (linec == 0) delim = getdelimiter(line);
+
 		//split the string using boost
 		vector<string> splitrow;
-		string delim = ",";
 		boost::split(splitrow, line, boost::is_any_of(delim));
 
 		//if this is the first row, allocate the
@@ -89,7 +139,7 @@ int getcolwidth (vector<string> incol) {
 		
 	}
 
-	return maxdatasize + 3;
+	return maxdatasize + 4;
 	
 }
 
@@ -99,7 +149,7 @@ int main(int argc, char* argv[]) {
 	checkinputs(argc);	
 
 	string filename = argv[1];
-
+	string delim = ",";
 	int linelimit;
 	if (argc == 3) {
 		linelimit = stoi(argv[2]);
