@@ -75,6 +75,7 @@ vector<vector<string>> read_file(string& filename, int& linelimit) {
 
 	ifstream infile(filename);
 	vector<vector<string>> fullfile;
+
 	string delim;
 	
 	string line;
@@ -96,11 +97,16 @@ vector<vector<string>> read_file(string& filename, int& linelimit) {
 		if (linec == 0) {
 	
 			numcols = splitrow.size();
+
+			//pre-allocate out main container for each column
+			fullfile.reserve(numcols);
+
 			//cout << "Found number of columns to be " << numcols << endl;
 			//Allocate a vector in the main vector for each column
 			for (int i = 0; i < numcols; i++) {
 
 				vector<string> col;
+				col.reserve(linelimit);
 				fullfile.push_back(col);
 
 			}	
