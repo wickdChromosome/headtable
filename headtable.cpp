@@ -145,7 +145,7 @@ int getcolwidth (vector<string> incol) {
 		
 	}
 
-	return maxdatasize + 4;
+	return maxdatasize + 5;
 	
 }
 
@@ -164,7 +164,7 @@ int main(int argc, char* argv[]) {
 		linelimit = 10;
 	}
 
-	const char separator    = ' ';
+	const char separator = ' ';
 	int linec = 0; //for storing how many lines we are done with
 
 	//read in the whole file

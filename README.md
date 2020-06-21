@@ -8,7 +8,15 @@ This displays a padded, scrollable table in your terminal of 10 lines from a csv
 ## Compilation
 
 ### Dependencies
-This project depends on Boost, C++11 and gcc. If you already have boost, you can compile the project by doing:
+This project depends on Boost, C++11 and gcc.
+On debian, you can get the deps by doing:
+```
+sudo apt install gcc libboost1.67-dev
+```
+
+
+
+### Now compile
 ```
 bash compile.sh
 ```
