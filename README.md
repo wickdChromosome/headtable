@@ -27,8 +27,8 @@ sudo apt install gcc libboost1.67-dev
 bash compile.sh
 ```
 
-### Install the binary
+### Install the binary system-wide
 
 ```
-bash install.sh
+sudo bash install.sh
 ```
