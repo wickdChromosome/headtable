@@ -10,6 +10,23 @@ To do this for 200 lines:
 ./headtable test.csv 200 | less -S
 ```
 
+Your output will look something like this:
+```
+gene_id          nvar    b_shape1    b_shape2  
+ENSG000002272    1364    1.093       294.4
+ENSG000002699    1868    1.093       358.2
+ENSG000002418    2066    1.093       383.2
+ENSG000002419    2066    1.093       396.2
+ENSG000002792    2234    1.093       412.3
+ENSG000002791    2234    1.093       408.3
+ENSG000002288    2799    1.093       511.3
+ENSG000002283    2799    1.093       452.4
+ENSG000002289    2799    1.093       490.6
+
+```
+
+
+
 ## Compilation
 
 ### Dependencies
