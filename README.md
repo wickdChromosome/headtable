@@ -25,7 +25,8 @@ ENSG000002289    2799    1.093       490.6
 
 ```
 
-
+Currently there is support for comma, semicolon and tab separators, which are automatically deduced 
+from the input file.
 
 ## Compilation
 
