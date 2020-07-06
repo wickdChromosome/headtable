@@ -27,7 +27,7 @@ string getdelimiter(string& firstline) {
 	
 	char delim;
 	bool already_found = false; //used to check if only a single delim exists
-	char delims[] = {',',';','\t'};
+	char delims[3] = {',',';','\t'};
 	int numseps = sizeof(delims)/sizeof(char);
 
 	//check if we 
@@ -44,12 +44,11 @@ string getdelimiter(string& firstline) {
 
 			} else {
 
-				//if no separator chars were found
+				//if a separator char was already found
 				cout << "ERROR: more than one separators were found\n";
 				exit(EXIT_FAILURE);
 
 			}
-
 		}
 	
 	}
@@ -87,7 +86,7 @@ vector<vector<string>> read_file(string& filename, int& linelimit) {
 
 		//if this is the first row, check for popular delimiters
 		if (linec == 0) delim = getdelimiter(line);
-
+	
 		//split the string using boost
 		vector<string> splitrow;
 		boost::split(splitrow, line, boost::is_any_of(delim));
@@ -196,7 +195,7 @@ int main(int argc, char* argv[]) {
 		//required padding
 		for (int j = 0; j < ncols; j++) {
 
-			cout << left << setw(paddings.at(j)) << setfill(separator) << filevect.at(j).at(i);
+			cout << right << setw(paddings.at(j)) << setfill(separator) << filevect.at(j).at(i);
 
 		}	
 

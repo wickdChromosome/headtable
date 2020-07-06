@@ -1,5 +1,4 @@
 # headtable
-
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
 [![GitHub Issues](https://img.shields.io/github/issues/wickdchromosome/headtable.svg)](https://github.com/wickdchromosome/headtable/issues)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
