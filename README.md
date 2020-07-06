@@ -6,7 +6,7 @@
 
 <div align="center" ><img style="padding-left:10%;" src="demo.gif" /></div>
 
-
+## Description
 
 This is a quick and dirty command line utility to display the head of a file, padded as a table - most useful when piped into less:
 ```
