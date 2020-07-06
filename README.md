@@ -4,9 +4,8 @@
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-<div style="text-align:center"><img src="demo.gif" /></div>
+<div style="text-align:center;width:100%"><img src="demo.gif" /></div>
 
-![demo](demo.gif)
 
 
 This is a quick and dirty command line utility to display the head of a file, padded as a table - most useful when piped into less:
