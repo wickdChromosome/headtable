@@ -82,11 +82,11 @@ vector<vector<string>> read_file(string& filename, int& linelimit) {
 	int numcols = 0;
 
 	//Fill main vector with lines 
-	while(getline(infile, line)) {
-
+	while(getline(infile, line)) {		
+		
 		//if this is the first row, check for popular delimiters
 		if (linec == 0) delim = getdelimiter(line);
-	
+
 		//split the string using boost
 		vector<string> splitrow;
 		boost::split(splitrow, line, boost::is_any_of(delim));
@@ -120,6 +120,7 @@ vector<vector<string>> read_file(string& filename, int& linelimit) {
 		}
 
 		linec += 1;
+
 		if (linec == linelimit) break ;
 
 
@@ -186,6 +187,15 @@ int main(int argc, char* argv[]) {
 		
 
 	//now lets print the results for each row
+	int numrows = filevect.at(0).size();
+	//lets make sure that we handle the case where the user
+	//requests more rows than available
+	if(linelimit > numrows) {
+	
+		linelimit = numrows;
+	
+	}
+
 	for (int i = 0; i < linelimit; i++) {
 
 		//lets quit if we are done printing
