@@ -47,8 +47,7 @@ sudo apt install gcc libboost1.67-dev
 ```
 
 
-
-### Now compile
+### Compile by doing:
 
 ```
 bash compile.sh
